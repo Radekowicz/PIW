@@ -1,0 +1,10 @@
+a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: coral;
+    font-size: 20px;
+}
+
+a:hover {
+    color: rgb(255, 179, 151);
+}

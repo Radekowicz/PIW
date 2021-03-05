@@ -1,0 +1,27 @@
+img {
+    width: 600px;
+    border: 5px solid #555;
+}
+
+h2 {
+    margin-left: 30px;
+}
+
+.dog-link:hover{
+    border: 5px solid coral;
+}
+
+a {
+    text-decoration: none;
+    color: coral;
+    font-size: 20px;
+}
+
+a:hover {
+    color: rgb(255, 179, 151);
+}
+
+.dog-link-container {
+    display: flex;
+    align-items: center;
+}
