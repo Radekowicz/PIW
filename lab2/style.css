@@ -1,0 +1,63 @@
+* {
+    font-family: Lexend;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    margin-top: 60px;
+    width: 500px;
+}
+
+.content {
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    height: 40px;
+    border-style: none none solid none;
+    border-width: 0px 0px 1px 0px;
+    padding-left: 10px;
+    margin: 10px;
+    font-size: large;
+}
+
+.lineThrough {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.todo-list {
+    padding: 10px;
+    margin-left: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+}
+
+li {
+    cursor: pointer;
+    padding: 12px 8px 12px 40px;
+    font-size: 18px;
+    transition: 0.2s;
+    margin: 0;
+}
+
+ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+li:hover {
+    background: lightgray;
+}
