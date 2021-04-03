@@ -56,8 +56,8 @@ const completeItem = (element) => {
 
 const removeItem = (element) => {
     if (confirm('Do you want to delete this item?')) {
-        element.parentNode.parentNode.removeChild(element.parentNode);
-        // $('.div').remove()
+        //jquery
+        $(element).parent().remove();
         removedItemName = LIST[element.id].name;
         removedId = element.id;
         LIST[element.id].trash = true;
