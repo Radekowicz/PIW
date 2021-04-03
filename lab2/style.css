@@ -11,16 +11,20 @@
     border-radius: 5px;
     margin-top: 60px;
     width: 500px;
+    padding: 20px;
 }
 
-.content {
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    width: 340px;
 }
 
 .item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 300px;
+    width: 280px;
     height: 40px;
     border-style: none none solid none;
     border-width: 0px 0px 1px 0px;
@@ -34,9 +38,17 @@
     color: grey;
 }
 
+.date {
+    color: darkgreen;
+}
+
 .todo-list {
     padding: 10px;
     margin-left: 0px;
+}
+
+.text:hover {
+    color: lightgray;
 }
 
 ul {
@@ -47,17 +59,15 @@ ul {
 li {
     cursor: pointer;
     padding: 12px 8px 12px 40px;
-    font-size: 18px;
     transition: 0.2s;
     margin: 0;
+    font-size: large;
 }
 
-ul li.checked {
-    background: #888;
-    color: #fff;
-    text-decoration: line-through;
-}
-
-li:hover {
+/* li:hover {
     background: lightgray;
+} */
+
+.bi-trash-fill:hover {
+    color: red;
 }
