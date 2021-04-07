@@ -38,8 +38,9 @@ function Search(props) {
           className={classes.input}
           placeholder="Search descriptions"
           type="text"
-          on
-          // inputProps={{ 'aria-label': 'search google maps' }}
+          onChange={({ target: { value } }) => {
+            props.updateCardsDescription(value);
+          }}
         />
         <IconButton className={classes.iconButton} aria-label="search">
           <SearchIcon />
@@ -50,7 +51,7 @@ function Search(props) {
           className={classes.input}
           placeholder="Search tags"
           onChange={({ target: { value } }) => {
-            props.updateCards(value);
+            props.updateCardsTags(value);
           }}
         />
         <IconButton className={classes.iconButton} aria-label="search">

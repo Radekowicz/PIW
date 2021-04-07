@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start',
   },
   leftContainer: {
-    maxWidth: 800,
+    width: 800,
   },
   searchBar: {
     display: 'flex',
@@ -30,8 +30,7 @@ const startCards = [
   },
   {
     name: 'Harry Potter',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus orci, laoreet sed congue id, rhoncus non dolor. Nullam euismod sapien in risus tincidunt, non ultricies massa commodo.',
+    description: 'Dupa kkkkk dsdsdsd',
     tags: ['Python', 'Django', 'CSS', 'HTML'],
   },
   {
@@ -48,7 +47,7 @@ const App = () => {
   const [cards, setCards] = useState(startCards);
   const [searchCards, setSearchCards] = useState();
 
-  const updateCards = (input) => {
+  const updateCardsTags = (input) => {
     if (input) {
       const filtered = [];
       cards.forEach((card) => {
@@ -57,6 +56,20 @@ const App = () => {
             filtered.push(card);
           }
         });
+      });
+      setSearchCards(filtered);
+    } else {
+      setSearchCards('');
+    }
+    console.log(searchCards);
+  };
+
+  const updateCardsDescription = (input) => {
+    if (input) {
+      const filtered = cards?.filter((card) => {
+        return card.description
+          .toLowerCase()
+          .includes(input.toString().toLowerCase());
       });
       setSearchCards(filtered);
     } else {
@@ -83,7 +96,10 @@ const App = () => {
     <Box class={classes.container}>
       <Box class={classes.leftContainer}>
         <Box class={classes.searchBar}>
-          <Search updateCards={updateCards} />
+          <Search
+            updateCardsTags={updateCardsTags}
+            updateCardsDescription={updateCardsDescription}
+          />
           <SearchResults />
         </Box>
         {(searchCards ? searchCards : cards).map((card) => {
