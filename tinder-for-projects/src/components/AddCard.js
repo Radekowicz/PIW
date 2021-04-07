@@ -27,14 +27,28 @@ const useStyles = makeStyles((theme) => ({
 function Search(props) {
   const classes = useStyles();
   const [typedName, setTypedName] = useState('');
-  const [typedDescription, setTypedDescription] = useState('');
   const [typedEmail, setTypedEmail] = useState('');
   const [typedTags, setTypedTags] = useState('');
+  const [typedDescription, setTypedDescription] = useState('');
 
   useEffect(() => {}, []);
 
+  const stringToArray = (str) => {
+    const words = str.split(' ');
+    words.map();
+  };
+
   const addStudent = () => {
-    props.addStudent(typedName, typedEmail, ['typedTags'], typedDescription);
+    props.addStudent(
+      typedName,
+      typedEmail,
+      typedTags.split(' '),
+      typedDescription
+    );
+    setTypedName('');
+    setTypedEmail('');
+    setTypedTags('');
+    setTypedDescription('');
   };
 
   return (
@@ -45,13 +59,14 @@ function Search(props) {
         justify="space-around"
         alignItems="center"
       >
-        <h2>Add student</h2>
+        <h2>Add post</h2>
         <TextField
           variant="outlined"
           label="Name"
           placeholder="Enter name"
           fullWidth
           className={classes.textField}
+          value={typedName}
           onChange={({ target: { value } }) => {
             setTypedName(value);
           }}
@@ -63,6 +78,7 @@ function Search(props) {
           placeholder="Enter email"
           fullWidth
           className={classes.textField}
+          value={typedEmail}
           onChange={({ target: { value } }) => {
             setTypedEmail(value);
           }}
@@ -73,6 +89,7 @@ function Search(props) {
           placeholder="Enter tags"
           fullWidth
           className={classes.textField}
+          value={typedTags}
           onChange={({ target: { value } }) => {
             setTypedTags(value);
           }}
@@ -85,6 +102,7 @@ function Search(props) {
           rows={5}
           fullWidth
           className={classes.textField}
+          value={typedDescription}
           onChange={({ target: { value } }) => {
             setTypedDescription(value);
           }}

@@ -37,13 +37,11 @@ function Search(props) {
         <InputBase
           className={classes.input}
           placeholder="Search descriptions"
+          type="text"
+          on
           // inputProps={{ 'aria-label': 'search google maps' }}
         />
-        <IconButton
-          type="submit"
-          className={classes.iconButton}
-          aria-label="search"
-        >
+        <IconButton className={classes.iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
       </Paper>
@@ -51,13 +49,11 @@ function Search(props) {
         <InputBase
           className={classes.input}
           placeholder="Search tags"
-          // inputProps={{ 'aria-label': 'search google maps' }}
+          onChange={({ target: { value } }) => {
+            props.updateCards(value);
+          }}
         />
-        <IconButton
-          type="submit"
-          className={classes.iconButton}
-          aria-label="search"
-        >
+        <IconButton className={classes.iconButton} aria-label="search">
           <SearchIcon />
         </IconButton>
       </Paper>

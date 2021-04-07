@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Cards from './components/studentCard/StudentCard';
+import Cards from './components/StudentCard';
 import Search from './components/Search';
 import SearchResults from './components/SearchResults';
 import AddCard from './components/AddCard';
@@ -9,6 +9,8 @@ import { Box, CardContent, Button, Typography, Card } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   },
   leftContainer: {
     maxWidth: 800,
@@ -16,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   searchBar: {
     display: 'flex',
   },
+  rightContainer: {},
 }));
 
 const startCards = [
@@ -43,8 +46,27 @@ const App = () => {
   const classes = useStyles();
 
   const [cards, setCards] = useState(startCards);
+  const [searchCards, setSearchCards] = useState();
+
+  const updateCards = (input) => {
+    if (input) {
+      const filtered = [];
+      cards.forEach((card) => {
+        card.tags.forEach((tag) => {
+          if (tag.toLowerCase().includes(input.toString().toLowerCase())) {
+            filtered.push(card);
+          }
+        });
+      });
+      setSearchCards(filtered);
+    } else {
+      setSearchCards('');
+    }
+    console.log(searchCards);
+  };
 
   const addStudent = (name, email, tags, description) => {
+    // if (name && email && tags && description) {
     const newCard = {
       name: name,
       email: email,
@@ -52,16 +74,19 @@ const App = () => {
       description: description,
     };
     setCards([...cards, newCard]);
+    // } else {
+    //   window.alert('Fill all inputs to add student');
+    // }
   };
 
   return (
     <Box class={classes.container}>
       <Box class={classes.leftContainer}>
         <Box class={classes.searchBar}>
-          <Search />
+          <Search updateCards={updateCards} />
           <SearchResults />
         </Box>
-        {cards.map((card) => {
+        {(searchCards ? searchCards : cards).map((card) => {
           return (
             <Cards
               name={card.name}
@@ -71,7 +96,9 @@ const App = () => {
           );
         })}
       </Box>
-      <AddCard addStudent={addStudent} />
+      <Box className={classes.rightContainer}>
+        <AddCard addStudent={addStudent} />
+      </Box>
     </Box>
   );
 };

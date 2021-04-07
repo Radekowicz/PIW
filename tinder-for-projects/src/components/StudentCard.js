@@ -10,12 +10,17 @@ const styles = (theme) => ({
     margin: 20,
     backgroundColor: 'white',
   },
+  nameContainer: {
+    display: 'flex',
+    alignItems: 'center',
+  },
   avatar: {
     fontSize: 40,
   },
   name: {
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 500,
+    marginLeft: 10,
   },
   description: {
     fontSize: 14,
@@ -44,10 +49,16 @@ class StudentCard extends Component {
     return (
       <Card className={classes.root}>
         <CardContent>
-          <AccountCircleIcon className={classes.avatar} />
-          <Typography className={classes.name} color="textPrimary" gutterBottom>
-            {this.props.name}
-          </Typography>
+          <Box className={classes.nameContainer}>
+            <AccountCircleIcon className={classes.avatar} />
+            <Typography
+              className={classes.name}
+              color="textPrimary"
+              gutterBottom
+            >
+              {this.props.name}
+            </Typography>
+          </Box>
           <Typography className={classes.description} color="textPrimary">
             {this.props.description}
           </Typography>
