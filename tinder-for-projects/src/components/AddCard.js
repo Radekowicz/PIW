@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
-import { Paper, Box, TextField, Grid, Button, Card } from '@material-ui/core';
+import { Paper, TextField, Grid, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,13 +29,6 @@ function Search(props) {
   const [typedEmail, setTypedEmail] = useState('');
   const [typedTags, setTypedTags] = useState('');
   const [typedDescription, setTypedDescription] = useState('');
-
-  useEffect(() => {}, []);
-
-  const stringToArray = (str) => {
-    const words = str.split(' ');
-    words.map();
-  };
 
   const addStudent = () => {
     props.addStudent(

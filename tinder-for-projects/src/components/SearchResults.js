@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/styles';
-import { Box, CardContent, Button, Typography, Card } from '@material-ui/core';
+import { Typography, Card } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import SendIcon from '@material-ui/icons/Send';
 
 const styles = (theme) => ({
   root: {
@@ -20,9 +18,7 @@ const styles = (theme) => ({
 class SearchResults extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      patient: 'sdfsdf',
-    };
+    this.state = {};
   }
 
   render() {
@@ -31,7 +27,7 @@ class SearchResults extends Component {
     return (
       <Card className={classes.root}>
         <Typography className={classes.name} color="textPrimary">
-          Found {this.props.candidates ? this.props.candidates : '0'} candidates
+          Found {this.props.results ? this.props.results : '0'} candidates
         </Typography>
       </Card>
     );

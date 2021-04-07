@@ -4,7 +4,7 @@ import Search from './components/Search';
 import SearchResults from './components/SearchResults';
 import AddCard from './components/AddCard';
 import { makeStyles } from '@material-ui/core/styles';
-import { Box, CardContent, Button, Typography, Card } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -46,6 +46,11 @@ const App = () => {
 
   const [cards, setCards] = useState(startCards);
   const [searchCards, setSearchCards] = useState();
+  const [numberOfResults, setNumberOfResults] = useState(cards.length);
+
+  useEffect(() => {
+    calcNumberOfResults();
+  });
 
   const updateCardsTags = (input) => {
     if (input) {
@@ -61,7 +66,6 @@ const App = () => {
     } else {
       setSearchCards('');
     }
-    console.log(searchCards);
   };
 
   const updateCardsDescription = (input) => {
@@ -75,7 +79,6 @@ const App = () => {
     } else {
       setSearchCards('');
     }
-    console.log(searchCards);
   };
 
   const addStudent = (name, email, tags, description) => {
@@ -92,6 +95,14 @@ const App = () => {
     // }
   };
 
+  const calcNumberOfResults = () => {
+    if (searchCards) {
+      setNumberOfResults(searchCards.length);
+    } else {
+      setNumberOfResults(cards.length);
+    }
+  };
+
   return (
     <Box class={classes.container}>
       <Box class={classes.leftContainer}>
@@ -100,7 +111,7 @@ const App = () => {
             updateCardsTags={updateCardsTags}
             updateCardsDescription={updateCardsDescription}
           />
-          <SearchResults />
+          <SearchResults results={numberOfResults} />
         </Box>
         {(searchCards ? searchCards : cards).map((card) => {
           return (
