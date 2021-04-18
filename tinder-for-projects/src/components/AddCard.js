@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Paper, TextField, Grid, Button } from '@material-ui/core';
+import TagSearch from './TagSearch';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,19 +28,14 @@ function Search(props) {
   const classes = useStyles();
   const [typedName, setTypedName] = useState('');
   const [typedEmail, setTypedEmail] = useState('');
-  const [typedTags, setTypedTags] = useState('');
+  const [typedTags, setTypedTags] = useState([]);
   const [typedDescription, setTypedDescription] = useState('');
 
   const addStudent = () => {
-    props.addStudent(
-      typedName,
-      typedEmail,
-      typedTags.split(' '),
-      typedDescription
-    );
+    props.addStudent(typedName, typedEmail, typedTags, typedDescription);
     setTypedName('');
     setTypedEmail('');
-    setTypedTags('');
+    setTypedTags([]);
     setTypedDescription('');
   };
 
@@ -75,7 +71,7 @@ function Search(props) {
             setTypedEmail(value);
           }}
         />
-        <TextField
+        {/* <TextField
           variant="outlined"
           label="Tags"
           placeholder="Enter tags"
@@ -85,7 +81,8 @@ function Search(props) {
           onChange={({ target: { value } }) => {
             setTypedTags(value);
           }}
-        />
+        /> */}
+        <TagSearch value={typedTags} setValue={setTypedTags} />
         <TextField
           variant="outlined"
           label="Description"

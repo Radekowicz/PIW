@@ -39,7 +39,7 @@ class StudentCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      patient: 'sdfsdf',
+      a: 'a',
     };
   }
 
