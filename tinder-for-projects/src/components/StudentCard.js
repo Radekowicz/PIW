@@ -23,24 +23,29 @@ const styles = (theme) => ({
     marginLeft: 10,
   },
   description: {
-    fontSize: 14,
+    fontSize: 15,
     marginBottom: 12,
+    marginTop: 10,
   },
   tags: {
-    fontSize: 12,
+    fontSize: 13,
+    marginTop: 20,
   },
   tag: {
     marginLeft: 5,
-    fontSize: 12,
+    fontSize: 13,
+  },
+  sendMessage: {
+    marginLeft: 10,
+    marginTop: 0,
+    marginBottom: 5,
   },
 });
 
 class StudentCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      a: 'a',
-    };
+    this.state = {};
   }
 
   render() {
@@ -71,7 +76,11 @@ class StudentCard extends Component {
             </Box>
           </Typography>
         </CardContent>
-        <Button size="small" endIcon={<SendIcon />}>
+        <Button
+          size="small"
+          endIcon={<SendIcon />}
+          className={classes.sendMessage}
+        >
           Send message
         </Button>
       </Card>

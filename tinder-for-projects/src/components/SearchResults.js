@@ -8,6 +8,8 @@ const styles = (theme) => ({
     maxWidth: 300,
     margin: 20,
     padding: 20,
+    display: 'flex',
+    alignItems: 'center',
   },
   name: {
     fontSize: 18,

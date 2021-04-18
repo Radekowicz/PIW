@@ -30,13 +30,14 @@ const startCards = [
   },
   {
     name: 'Harry Potter',
-    description: 'Dupa kkkkk dsdsdsd',
+    description:
+      'Donec finibus urna nec porttitor bibendum. Nullam egestas metus mi, rutrum tincidunt leo aliquet eget. Nulla lorem neque, malesuada quis bibendum.',
     tags: ['Python', 'Django', 'CSS', 'HTML'],
   },
   {
-    name: 'Fordo Baggins',
+    name: 'Frodo Baggins',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus orci, laoreet sed congue id, rhoncus non dolor. Nullam euismod sapien in risus tincidunt, non ultricies massa commodo.',
+      'Vivamus ac mauris ut diam euismod gravida. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
     tags: ['C', 'C++', 'C#', 'Assembler', 'Bash'],
   },
 ];
@@ -82,17 +83,17 @@ const App = () => {
   };
 
   const addStudent = (name, email, tags, description) => {
-    // if (name && email && tags && description) {
-    const newCard = {
-      name: name,
-      email: email,
-      tags: tags,
-      description: description,
-    };
-    setCards([...cards, newCard]);
-    // } else {
-    //   window.alert('Fill all inputs to add student');
-    // }
+    if (name && email && tags && description) {
+      const newCard = {
+        name: name,
+        email: email,
+        tags: tags,
+        description: description,
+      };
+      setCards([...cards, newCard]);
+    } else {
+      window.alert('Fill all inputs to add student');
+    }
   };
 
   const calcNumberOfResults = () => {

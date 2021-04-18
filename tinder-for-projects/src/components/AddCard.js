@@ -5,15 +5,13 @@ import TagSearch from './TagSearch';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '2px 4px',
     display: 'flex',
+    flexDirextion: 'row',
     alignItems: 'center',
-    width: 400,
-    margin: 20,
   },
   paper: {
     padding: 40,
-    height: 500,
+    minHeight: 550,
     width: 300,
     margin: 20,
   },
@@ -21,10 +19,14 @@ const useStyles = makeStyles((theme) => ({
     margin: '15px auto',
     height: 40,
   },
-  loginButton: { margin: '110px auto' },
+  loginButton: {
+    alignSelf: 'flex-end',
+    marginTop: 120,
+    height: 40,
+  },
 }));
 
-function Search(props) {
+export default function Search(props) {
   const classes = useStyles();
   const [typedName, setTypedName] = useState('');
   const [typedEmail, setTypedEmail] = useState('');
@@ -41,12 +43,7 @@ function Search(props) {
 
   return (
     <Paper elevation={10} className={classes.paper}>
-      <Grid
-        container
-        direction="row"
-        justify="space-around"
-        alignItems="center"
-      >
+      <Grid className={classes.root} container>
         <h2>Add post</h2>
         <TextField
           variant="outlined"
@@ -71,18 +68,11 @@ function Search(props) {
             setTypedEmail(value);
           }}
         />
-        {/* <TextField
-          variant="outlined"
-          label="Tags"
-          placeholder="Enter tags"
-          fullWidth
-          className={classes.textField}
+        <TagSearch
           value={typedTags}
-          onChange={({ target: { value } }) => {
-            setTypedTags(value);
-          }}
-        /> */}
-        <TagSearch value={typedTags} setValue={setTypedTags} />
+          setValue={setTypedTags}
+          className={classes.textField}
+        />
         <TextField
           variant="outlined"
           label="Description"
@@ -110,5 +100,3 @@ function Search(props) {
     </Paper>
   );
 }
-
-export default Search;
