@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Cards from '../components/StudentCard';
+import StudentCard from '../components/StudentCard';
 import Search from '../components/Search';
 import SearchResults from '../components/SearchResults';
 import { makeStyles } from '@material-ui/core/styles';
@@ -70,6 +70,22 @@ const MainPage = (props) => {
     }
   };
 
+  const editStudent = (index, name, email, tags, description) => {
+    if (name && email && tags && description) {
+      const editedCard = {
+        name: name,
+        email: email,
+        tags: tags,
+        description: description,
+      };
+      let tempCards = [...props.cards];
+      tempCards[index] = editedCard;
+      props.setCards(tempCards);
+    } else {
+      window.alert('Fill all inputs to edit student');
+    }
+  };
+
   return (
     <Box class={classes.container}>
       <Box class={classes.searchBar}>
@@ -80,12 +96,15 @@ const MainPage = (props) => {
         <SearchResults results={numberOfResults} />
       </Box>
       <Box class={classes.leftContainer}>
-        {(searchCards ? searchCards : props.cards).map((card) => {
+        {(searchCards ? searchCards : props.cards).map((card, index) => {
           return (
-            <Cards
+            <StudentCard
               name={card.name}
+              email={card.email}
               description={card.description}
               tags={card.tags}
+              index={index}
+              editStudent={editStudent}
             />
           );
         })}

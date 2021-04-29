@@ -17,18 +17,21 @@ const useStyles = makeStyles((theme) => ({
 const startCards = [
   {
     name: 'James Bond',
+    email: 'bondjames@hermajesty.com',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus orci, laoreet sed congue id, rhoncus non dolor. Nullam euismod sapien in risus tincidunt, non ultricies massa commodo.',
     tags: ['React', 'JavaScript', 'CSS', 'HTML'],
   },
   {
     name: 'Harry Potter',
+    email: 'harrypotter@hogwart.com',
     description:
       'Donec finibus urna nec porttitor bibendum. Nullam egestas metus mi, rutrum tincidunt leo aliquet eget. Nulla lorem neque, malesuada quis bibendum.',
     tags: ['Python', 'Django', 'CSS', 'HTML'],
   },
   {
     name: 'Frodo Baggins',
+    email: 'mrgaggins@thering.com',
     description:
       'Vivamus ac mauris ut diam euismod gravida. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
     tags: ['C', 'C++', 'C#', 'Assembler', 'Bash'],

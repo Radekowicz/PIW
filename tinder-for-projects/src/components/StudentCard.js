@@ -4,6 +4,8 @@ import { Box, CardContent, Button, Typography, Card } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SendIcon from '@material-ui/icons/Send';
+import EditIcon from '@material-ui/icons/Edit';
+import EditPopup from '../components/EditPopup';
 
 const styles = (theme) => ({
   root: {
@@ -45,45 +47,67 @@ const styles = (theme) => ({
 class StudentCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { popupOpen: false };
   }
 
   render() {
     const { classes } = this.props;
 
     return (
-      <Card className={classes.root}>
-        <CardContent>
-          <Box className={classes.nameContainer}>
-            <AccountCircleIcon className={classes.avatar} />
-            <Typography
-              className={classes.name}
-              color="textPrimary"
-              gutterBottom
-            >
-              {this.props.name}
-            </Typography>
-          </Box>
-          <Typography className={classes.description} color="textPrimary">
-            {this.props.description}
-          </Typography>
-          <Typography className={classes.tags} color="textSecondary">
-            <Box display="flex" flexDirection="row">
-              Tags:{' '}
-              {this.props.tags?.map((tag) => {
-                return <Typography className={classes.tag}>{tag} </Typography>;
-              })}
+      <div>
+        <Card className={classes.root}>
+          <CardContent>
+            <Box className={classes.nameContainer}>
+              <AccountCircleIcon className={classes.avatar} />
+              <Typography
+                className={classes.name}
+                color="textPrimary"
+                gutterBottom
+              >
+                {this.props.name}
+              </Typography>
             </Box>
-          </Typography>
-        </CardContent>
-        <Button
-          size="small"
-          endIcon={<SendIcon />}
-          className={classes.sendMessage}
-        >
-          Send message
-        </Button>
-      </Card>
+            <Typography className={classes.description} color="textPrimary">
+              {this.props.description}
+            </Typography>
+            <Typography className={classes.tags} color="textSecondary">
+              <Box display="flex" flexDirection="row">
+                Tags:{' '}
+                {this.props.tags?.map((tag) => {
+                  return (
+                    <Typography className={classes.tag}>{tag} </Typography>
+                  );
+                })}
+              </Box>
+            </Typography>
+          </CardContent>
+          <Button
+            size="small"
+            endIcon={<SendIcon />}
+            className={classes.sendMessage}
+          >
+            Send message
+          </Button>
+          <Button
+            size="small"
+            endIcon={<EditIcon />}
+            className={classes.sendMessage}
+            onClick={() => this.setState({ popupOpen: true })}
+          >
+            Edit
+          </Button>
+        </Card>
+        <EditPopup
+          popupOpen={this.state.popupOpen}
+          onClose={() => this.setState({ popupOpen: false })}
+          name={this.props.name}
+          email={this.props.email}
+          tags={this.props.tags}
+          description={this.props.description}
+          index={this.props.index}
+          editStudent={this.props.editStudent}
+        />
+      </div>
     );
   }
 }
