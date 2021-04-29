@@ -37,13 +37,22 @@ const startCards = [
 
 const App = () => {
   const classes = useStyles();
+  const [cards, setCards] = useState(startCards);
 
   return (
     <Router>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route exact path="/addcard" component={AddCardPage} />
+        <Route
+          exact
+          path="/"
+          component={() => <MainPage cards={cards} setCards={setCards} />}
+        />
+        <Route
+          exact
+          path="/addcard"
+          component={() => <AddCardPage cards={cards} setCards={setCards} />}
+        />
       </Switch>
     </Router>
   );

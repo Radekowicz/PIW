@@ -23,33 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const startCards = [
-  {
-    name: 'James Bond',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed purus orci, laoreet sed congue id, rhoncus non dolor. Nullam euismod sapien in risus tincidunt, non ultricies massa commodo.',
-    tags: ['React', 'JavaScript', 'CSS', 'HTML'],
-  },
-  {
-    name: 'Harry Potter',
-    description:
-      'Donec finibus urna nec porttitor bibendum. Nullam egestas metus mi, rutrum tincidunt leo aliquet eget. Nulla lorem neque, malesuada quis bibendum.',
-    tags: ['Python', 'Django', 'CSS', 'HTML'],
-  },
-  {
-    name: 'Frodo Baggins',
-    description:
-      'Vivamus ac mauris ut diam euismod gravida. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
-    tags: ['C', 'C++', 'C#', 'Assembler', 'Bash'],
-  },
-];
-
-const MainPage = () => {
+const MainPage = (props) => {
   const classes = useStyles();
 
-  const [cards, setCards] = useState(startCards);
   const [searchCards, setSearchCards] = useState();
-  const [numberOfResults, setNumberOfResults] = useState(cards.length);
+  const [numberOfResults, setNumberOfResults] = useState(props.cards.length);
 
   useEffect(() => {
     calcNumberOfResults();
@@ -58,7 +36,7 @@ const MainPage = () => {
   const updateCardsTags = (input) => {
     if (input) {
       const filtered = [];
-      cards.forEach((card) => {
+      props.cards.forEach((card) => {
         card.tags.forEach((tag) => {
           if (tag.toLowerCase().includes(input.toString().toLowerCase())) {
             filtered.push(card);
@@ -73,7 +51,7 @@ const MainPage = () => {
 
   const updateCardsDescription = (input) => {
     if (input) {
-      const filtered = cards?.filter((card) => {
+      const filtered = props.cards?.filter((card) => {
         return card.description
           .toLowerCase()
           .includes(input.toString().toLowerCase());
@@ -88,7 +66,7 @@ const MainPage = () => {
     if (searchCards) {
       setNumberOfResults(searchCards.length);
     } else {
-      setNumberOfResults(cards.length);
+      setNumberOfResults(props.cards.length);
     }
   };
 
@@ -102,7 +80,7 @@ const MainPage = () => {
         <SearchResults results={numberOfResults} />
       </Box>
       <Box class={classes.leftContainer}>
-        {(searchCards ? searchCards : cards).map((card) => {
+        {(searchCards ? searchCards : props.cards).map((card) => {
           return (
             <Cards
               name={card.name}
