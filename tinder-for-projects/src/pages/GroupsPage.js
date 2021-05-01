@@ -82,7 +82,7 @@ const GroupsPage = (props) => {
       tempCards[index] = editedCard;
       props.setCards(tempCards);
     } else {
-      window.alert('Fill all inputs to edit student');
+      window.alert('Fill all inputs to edit group');
     }
   };
 

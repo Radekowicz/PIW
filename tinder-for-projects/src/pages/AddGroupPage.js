@@ -31,7 +31,7 @@ const AddGroupPage = (props) => {
       };
       props.setCards([...props.cards, newCard]);
     } else {
-      window.alert('Fill all inputs to add student');
+      window.alert('Fill all inputs to add group');
     }
   };
 
