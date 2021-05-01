@@ -37,8 +37,18 @@ const styles = (theme) => ({
     marginLeft: 5,
     fontSize: 13,
   },
-  sendMessage: {
+  sendMessageButton: {
     marginLeft: 10,
+    marginTop: 0,
+    marginBottom: 5,
+  },
+  cardButtons: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  editButton: {
+    marginRight: 10,
     marginTop: 0,
     marginBottom: 5,
   },
@@ -81,21 +91,23 @@ class StudentCard extends Component {
               </Box>
             </Typography>
           </CardContent>
-          <Button
-            size="small"
-            endIcon={<SendIcon />}
-            className={classes.sendMessage}
-          >
-            Send message
-          </Button>
-          <Button
-            size="small"
-            endIcon={<EditIcon />}
-            className={classes.sendMessage}
-            onClick={() => this.setState({ popupOpen: true })}
-          >
-            Edit
-          </Button>
+          <Box className={classes.cardButtons}>
+            <Button
+              size="small"
+              endIcon={<SendIcon />}
+              className={classes.sendMessageButton}
+            >
+              Send message
+            </Button>
+            <Button
+              size="small"
+              endIcon={<EditIcon />}
+              className={classes.editButton}
+              onClick={() => this.setState({ popupOpen: true })}
+            >
+              Edit
+            </Button>
+          </Box>
         </Card>
         <EditPopup
           popupOpen={this.state.popupOpen}
