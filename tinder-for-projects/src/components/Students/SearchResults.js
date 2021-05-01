@@ -29,7 +29,7 @@ class SearchResults extends Component {
     return (
       <Card className={classes.root}>
         <Typography className={classes.name} color="textPrimary">
-          Found {this.props.results ? this.props.results : '0'} candidates
+          Found {this.props.results ? this.props.results : '0'} students
         </Typography>
       </Card>
     );

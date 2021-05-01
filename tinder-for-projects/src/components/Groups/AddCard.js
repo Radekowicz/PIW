@@ -44,7 +44,7 @@ export default function Search(props) {
   return (
     <Paper elevation={10} className={classes.paper}>
       <Grid className={classes.root} container>
-        <h2>Add post</h2>
+        <h2>Add group</h2>
         <TextField
           variant="outlined"
           label="Name"

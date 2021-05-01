@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AddCard from '../components/AddCard';
+import AddCard from '../components/Students/AddCard';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   rightContainer: {},
 }));
 
-const AddCardPage = (props) => {
+const AddStudentPage = (props) => {
   const classes = useStyles();
 
   const addStudent = (name, email, tags, description) => {
@@ -42,4 +42,4 @@ const AddCardPage = (props) => {
   );
 };
 
-export default AddCardPage;
+export default AddStudentPage;

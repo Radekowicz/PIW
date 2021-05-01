@@ -30,11 +30,17 @@ export default function Navbar() {
           <Typography variant="h6" className={classes.title}>
             Tinder for Projects
           </Typography>
-          <Button color="inherit" component={Link} to="/">
-            Posts
+          <Button color="inherit" component={Link} to="/students">
+            Students
           </Button>
-          <Button color="inherit" component={Link} to="/addcard">
-            Add post
+          <Button color="inherit" component={Link} to="/addStudent">
+            Add Student
+          </Button>
+          <Button color="inherit" component={Link} to="/groups">
+            Groups
+          </Button>
+          <Button color="inherit" component={Link} to="/addGroup">
+            Add Group
           </Button>
         </Toolbar>
       </AppBar>

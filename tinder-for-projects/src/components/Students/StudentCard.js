@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import SendIcon from '@material-ui/icons/Send';
 import EditIcon from '@material-ui/icons/Edit';
-import EditPopup from '../components/EditPopup';
+import EditPopup from './EditPopup';
 
 const styles = (theme) => ({
   root: {

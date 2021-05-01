@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import MainPage from './pages/MainPage';
-import AddCardPage from './pages/AddCardPage';
-import { makeStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
+import StudentsPage from './pages/StudentsPage';
+import AddStudentPage from './pages/AddStudentPage';
+import GroupsPage from './pages/GroupsPage';
+import AddGroupPage from './pages/AddGroupPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-const useStyles = makeStyles((theme) => ({
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-}));
-
-const startCards = [
+const startStudentCards = [
   {
     name: 'James Bond',
     email: 'bondjames@hermajesty.com',
@@ -38,23 +30,62 @@ const startCards = [
   },
 ];
 
+const startGroupCards = [
+  {
+    name: 'InnoDocs',
+    email: 'applciations@innodocs.com',
+    description:
+      'Donec finibus urna nec porttitor bibendum. Nullam egestas metus mi, rutrum tincidunt leo aliquet eget. Nulla lorem neque, malesuada quis bibendum. Vivamus ac mauris ut diam euismod gravida. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+    tags: ['React', 'Slate', 'Python', 'Flask', 'TinyDB'],
+  },
+  {
+    name: 'Best Tournament App',
+    email: 'besttournamentapp@gmail.com',
+    description:
+      'Cras commodo eros dui, at pharetra lorem accumsan quis. Vivamus id leo sagittis, accumsan libero non, auctor turpis. Nam turpis arcu, vestibulum eu eros a, molestie tincidunt neque. Ut facilisis, lorem quis interdum condimentum, odio ante ultricies dolor, vitae pharetra augue mauris et urna.',
+    tags: ['Vue', 'JavaScript', 'HTML', 'CSS', 'Node.js', 'Express.js'],
+  },
+  {
+    name: 'New Facebook',
+    email: 'newfb@marksucs.com',
+    description:
+      'Vivamus ac mauris ut diam euismod gravida. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. ',
+    tags: ['React', 'JavaScript', 'CSS', 'HTML'],
+  },
+];
+
 const App = () => {
-  const classes = useStyles();
-  const [cards, setCards] = useState(startCards);
+  const [studentCards, setStudentCards] = useState(startStudentCards);
+  const [groupCards, setGroupCards] = useState(startGroupCards);
 
   return (
     <Router>
       <Navbar />
       <Switch>
         <Route
-          exact
-          path="/"
-          component={() => <MainPage cards={cards} setCards={setCards} />}
+          path="/students"
+          component={() => (
+            <StudentsPage cards={studentCards} setCards={setStudentCards} />
+          )}
         />
         <Route
-          exact
-          path="/addcard"
-          component={() => <AddCardPage cards={cards} setCards={setCards} />}
+          path="/addStudent"
+          component={() => (
+            <AddStudentPage cards={studentCards} setCards={setStudentCards} />
+          )}
+        />
+        studentCards
+        <Route
+          path="/groups"
+          component={() => (
+            <GroupsPage cards={groupCards} setCards={setGroupCards} />
+          )}
+        />
+        <Route
+          path="/addGroup"
+          component={() => (
+            <AddGroupPage cards={groupCards} setCards={setGroupCards} />
+          )}
         />
       </Switch>
     </Router>

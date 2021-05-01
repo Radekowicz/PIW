@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import StudentCard from '../components/StudentCard';
-import Search from '../components/Search';
-import SearchResults from '../components/SearchResults';
+import StudentCard from '../components/Students/StudentCard';
+import Search from '../components/Students/Search';
+import SearchResults from '../components/Students/SearchResults';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box } from '@material-ui/core';
 
@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   leftContainer: {
     maxWidth: 900,
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     justifyContent: 'center',
   },
   searchBar: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainPage = (props) => {
+const StudentsPage = (props) => {
   const classes = useStyles();
 
   const [searchCards, setSearchCards] = useState();
@@ -113,4 +113,4 @@ const MainPage = (props) => {
   );
 };
 
-export default MainPage;
+export default StudentsPage;
