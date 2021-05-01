@@ -63,26 +63,25 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route
-          path="/PIW/students"
+          path="/students"
           component={() => (
             <StudentsPage cards={studentCards} setCards={setStudentCards} />
           )}
         />
         <Route
-          path="/PIW/addStudent"
+          path="/addStudent"
           component={() => (
             <AddStudentPage cards={studentCards} setCards={setStudentCards} />
           )}
         />
-        studentCards
         <Route
-          path="/PIW/groups"
+          path="/groups"
           component={() => (
             <GroupsPage cards={groupCards} setCards={setGroupCards} />
           )}
         />
         <Route
-          path="/PIW/addGroup"
+          path="/addGroup"
           component={() => (
             <AddGroupPage cards={groupCards} setCards={setGroupCards} />
           )}
